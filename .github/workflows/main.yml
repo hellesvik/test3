@@ -27,12 +27,12 @@ jobs:
           path: "pdfs/test.pdf"
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "book.pdf"
+          artifacts: "test.pdf"
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: pdfs/book.pdf
-          asset_name: book.pdf
+          file: pdfs/test.pdf
+          asset_name: test.pdf
           tag: ${{ github.ref }}
           overwrite: true
           body: "This is my release text"
