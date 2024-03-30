@@ -28,9 +28,12 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "./book.pdf"
-      - uses: alexellis/upload-assets@0.4.1
-        env:
-          GITHUB_TOKEN: ${{ github.RELEASE }}
+      - uses: svenstaro/upload-release-action@v2
         with:
-          asset_paths: '["./book.pdf"]'
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: "./book.pdf"
+          asset_name: book
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "This is my release text"
 
