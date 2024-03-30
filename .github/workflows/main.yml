@@ -27,4 +27,10 @@ jobs:
           path: ./book.pdf
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "book.pdf"
+          artifacts: "./book.pdf"
+      - uses: alexellis/upload-assets@0.4.1
+        env:
+          GITHUB_TOKEN: ${{ github.RELEASE }}
+        with:
+          asset_paths: '["./book.pdf"]'
+
