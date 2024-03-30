@@ -23,20 +23,20 @@ jobs:
         with:
           name: docs
           path: ./book.pdf
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - name: Create a Release
+      uses: elgohr/Github-Release-Action@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
+          title: MyReleaseMessage
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.sha }}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - name: Upload Release Asset
+      uses: alexellis/upload-assets@0.4.0
+      env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./book
