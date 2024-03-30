@@ -24,10 +24,10 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: docs
-          path: "pdfs/test.pdf"
+          path: pdfs
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "test.pdf"
+          artifacts: "pdfs/test.pdf"
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
