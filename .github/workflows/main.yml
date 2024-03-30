@@ -27,11 +27,11 @@ jobs:
           path: ./book.pdf
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "./book.pdf"
+          artifacts: "book.pdf"
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: "./book.pdf"
+          file: "book.pdf"
           asset_name: book
           tag: ${{ github.ref }}
           overwrite: true
