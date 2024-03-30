@@ -28,3 +28,11 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "book.pdf"
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: pdfs/book.pdf
+          asset_name: book.pdf
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "This is my release text"
