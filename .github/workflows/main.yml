@@ -20,7 +20,7 @@ jobs:
           output_dir: "./"
           build_html: false
       - name: Show files changed
-        run: pwd; ls -la pdfs; tree
+        run: pwd; tree
       - name: Upload Artifacts
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v1
