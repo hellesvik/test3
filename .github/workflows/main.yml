@@ -27,11 +27,14 @@ jobs:
         with:
           name: test
           path: test.pdf
+      - uses: elMuso/MergePDFs-action@1.1
+        with:
+          path: "./"
+          filename: "book.pdf"
       - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@483c1e56f95e88835747b1c7c60581215016cbf2
+        uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: "*.pdf"
-          file_glob: true
+          file: "book.pdf"
           tag: cv
           overwrite: true
