@@ -21,3 +21,16 @@ jobs:
           build_html: false
       - name: Show files changed
         run: pwd; ls -la pdfs; tree
+      - name: Upload Artifacts
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v1
+        with:
+          name: test
+          path: test.pdf
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@483c1e56f95e88835747b1c7c60581215016cbf2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: test.pdf
+          tag: cv
+          overwrite: true
