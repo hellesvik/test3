@@ -1,10 +1,10 @@
-name: Docs to PDF
+name: Release PDF
 # This workflow is triggered on pushes to the repository.
 on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - '*' # Push events to matching v*, i.e. v1.0, v20.15.10
   
 jobs:
   converttopdf:
@@ -31,6 +31,6 @@ jobs:
         uses: svenstaro/upload-release-action@483c1e56f95e88835747b1c7c60581215016cbf2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: test.pdf
+          file: "*.pdf"
           tag: cv
           overwrite: true
