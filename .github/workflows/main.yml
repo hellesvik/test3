@@ -27,7 +27,7 @@ jobs:
           path: pdfs
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: pdfs
+          artifacts: "pdfs/*.pdf"
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
